@@ -10,10 +10,16 @@ jobs:
       - run: echo "$(cat hello_world.txt)"
 
       - name: Send Email Notification
-        env:
-          TO_EMAIL: sriranjan.m@intel.com  # Adjust recipient email address
-          FROM_EMAIL: git@example.com  # Adjust sender email address
-          SUBJECT: "Notification: Changes pushed to ${{ github.repository }}"  # Adjust email subject
-        run: |
-          echo "Changes have been pushed to ${{ github.repository }}. Check the repository for details." | mail -s "$SUBJECT" -r "$FROM_EMAIL" "$TO_EMAIL"
+        uses: dawidd6/action-send-mail@v3.12.0
+        with:
+          subject: git-mail-testtt
+          # Recipients mail addresses (separated with comma)
+          to: sriranjan.m@intel.com
+          # Full name of mail sender (might be with an email address specified in <>)
+          from: git_test@gitaction.com
+          # Body of mail message (might be a filename prefixed with file:// to read from)
+          body: git-mail-testtt
+          # HTML body of mail message (might be a filename prefixed with file:// to read from)
+          
+          
             
