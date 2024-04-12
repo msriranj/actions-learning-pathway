@@ -9,13 +9,11 @@ jobs:
 
       - run: echo "$(cat hello_world.txt)"
 
-      - name: Send email
-        uses: cinotify/github-action@v1.6.0
-        with:
-            # Recipient email address
-            to: sriranjan.m@intel.com
-            # Email subject
-            subject: mail_test
-            # Email body
-            body: testing notification mail
+      - name: Send Email Notification
+        env:
+          TO_EMAIL: sriranjan.m@intel.com  # Adjust recipient email address
+          FROM_EMAIL: git@example.com  # Adjust sender email address
+          SUBJECT: "Notification: Changes pushed to ${{ github.repository }}"  # Adjust email subject
+        run: |
+          echo "Changes have been pushed to ${{ github.repository }}. Check the repository for details." | mail -s "$SUBJECT" -r "$FROM_EMAIL" "$TO_EMAIL"
             
