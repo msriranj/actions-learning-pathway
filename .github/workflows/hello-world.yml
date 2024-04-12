@@ -12,6 +12,7 @@ jobs:
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3.12.0
         with:
+          server_address: "{{localhost}}"
           subject: git-mail-testtt
           # Recipients mail addresses (separated with comma)
           to: sriranjan.m@intel.com
