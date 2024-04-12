@@ -8,3 +8,14 @@ jobs:
         uses: actions/checkout@v3  
 
       - run: echo "$(cat hello_world.txt)"
+
+      - name: Send email
+        uses: cinotify/github-action@v1.6.0
+        with:
+            # Recipient email address
+            to: sriranjan.m@intel.com
+            # Email subject
+            subject: mail_test
+            # Email body
+            body: testing notification mail
+            
